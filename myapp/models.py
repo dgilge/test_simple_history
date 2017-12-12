@@ -5,4 +5,6 @@ from simple_history.models import HistoricalRecords
 class TestModel(models.Model):
     field = models.IntegerField(default=1)
 
-    history = HistoricalRecords()
+    exclude_field = models.IntegerField(default=2)
+
+    history = HistoricalRecords(excluded_fields=['exclude_field'])

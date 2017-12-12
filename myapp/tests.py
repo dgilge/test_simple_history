@@ -10,5 +10,8 @@ class Test(TestCase):
 
     def test_historical_manager_works_with_drf(self):
         response = self.client.get('/testurl/')
-        import pdb;pdb.set_trace()
         self.assertEqual(response.status_code, 200)
+
+    def test_most_recent_works_with_excluded_fields(self):
+        latest = self.obj.history.most_recent()
+        self.assertEqual(latest.field == 100)
